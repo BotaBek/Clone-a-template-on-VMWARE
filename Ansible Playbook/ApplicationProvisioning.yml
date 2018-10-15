@@ -1,0 +1,19 @@
+---
+ - name: set basic configuration on newmly craeted guests
+   hosts: all
+   user: root
+   gather_facts: False
+   tasks: 
+     - name: show host information
+       debug:
+         msg: "{{ inventory_hostnmae + '' + ansible_ssh_host + '' + vmware_uuid }}
+         
+     - name:install libselinux
+       yum: name=libselinux-python state=present
+       
+     - name: install epel
+       yum: name-epel-release state=present
+       
+     - name: install libselinux
+       yum: name=libselinux_python state=present
+   
